@@ -10,8 +10,8 @@ const AppRouter = () => {
         <Routes>
             <Route path="/" element={<LandingPage/>}/>
             <Route path="/panel" element={<PanelPage/>}/>
-            <Route path="/constructor:id?" element={<ConstructorPage/>}/>
-            <Route path="/offer:id" element={<OfferPage/>}/>
+            <Route path="/constructor/:id?" element={<ConstructorPage/>}/>
+            <Route path="/offer/:id" element={<OfferPage/>}/>
             <Route path="*" element={<ErrorPage/>}/>
         </Routes>
     );

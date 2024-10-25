@@ -1,0 +1,38 @@
+.body{
+    background-color: var(--background-color-2);
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.open {
+    width: 250px;
+}
+
+.left {
+    left: 0;
+    border-left: var(--background-color-1) 1px solid;
+}
+
+.right {
+    right: 0;
+    border-right: var(--background-color-1) 1px solid;
+}
+
+.resizeHandle {
+    position: absolute;
+    top: 0;
+    cursor: col-resize;
+    width: 10px;
+    height: 100%;
+    z-index: 10;
+    background: transparent;
+}
+
+.resizeHandleLeft {
+    right: 0;
+}
+
+.resizeHandleRight {
+    left: 0;
+}

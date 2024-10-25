@@ -1,0 +1,30 @@
+.block{
+    display: flex;
+    box-sizing: border-box;
+    height: 50px;
+    background-color: var(--background-color-2);
+    border-bottom: var(--background-color-1) 1px solid;
+    width: 100%;
+    padding: 8px;
+    color: white;
+}
+
+.block > div{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.left{
+    justify-content: flex-start;
+}
+
+.center{
+    justify-content: center;
+    align-items: center;
+}
+
+.right{
+    justify-content: flex-end;
+}

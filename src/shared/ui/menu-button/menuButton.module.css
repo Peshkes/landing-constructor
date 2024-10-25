@@ -1,0 +1,36 @@
+.button {
+    gap: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.button > img {
+    width: 20px;
+}
+
+.button:hover {
+    background-color: var(--background-color-3);
+}
+
+.button:active {
+    background-color: var(--background-color-4);
+}
+
+.open{
+    background-color: var(--primary-color-1);
+}
+
+.open:hover {
+    background-color: var(--primary-color-2);
+}
+
+.open:active {
+    background-color: var(--primary-color-3);
+}

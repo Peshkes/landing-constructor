@@ -1,0 +1,37 @@
+.block{
+    margin-left: 40px;
+    font-size: 14px;
+    border-bottom: var(--background-color-1) 1px solid;
+    padding: 6px 0 21px;
+}
+
+.expanded{
+    margin-left: 14px;
+}
+
+.expanded:first-child{
+    margin-top: -14px;
+}
+
+.block img{
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+.block span{
+    padding: 5px;
+    background: var(--background-color-3);
+    border-radius: 5px;
+    color: var(--text-color-2);
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.block p{
+    line-height: 25px;
+}
+
+.block:last-of-type{
+    border-bottom: none;
+}

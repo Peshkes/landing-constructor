@@ -1,8 +1,16 @@
 import {create} from "zustand";
-import {OffersStore} from "./types.ts";
+import {OfferPreview, OffersStore} from "./types.ts";
+
+const template: OfferPreview = {
+    id: "asdasd-asdasdasd-asdasd-adsdas",
+    name: "Template Offer",
+    status: "draft"
+};
 
 const useOffers = create<OffersStore>((set, get) => ({
-    offerPreviews: [],
+    offerPreviews: [
+        template
+    ],
     getStatusById: (id) => get().offerPreviews.find((offer) => offer.id === id)!.status,
     setStatusById: (id, status) => {
         const offerPreviews = [...get().offerPreviews];

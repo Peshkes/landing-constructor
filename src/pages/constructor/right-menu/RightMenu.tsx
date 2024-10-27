@@ -1,10 +1,8 @@
 import {useState} from "react";
-import LayersButton from "../../../shared/components/LayersButton.tsx";
-import SettingsButton from "../../../shared/components/SettingsButton.tsx";
-import SettingsContent from "./settings-content/SettingsContent.tsx";
-import ArchitectureContent from "./architecture-content/ArchitectureContent.tsx";
 import SideIconMenu from "../side-icon-menu/SideIconMenu.tsx";
 import SideContentMenu from "../side-content-menu/SideContentMenu.tsx";
+import GridButton from "../../../shared/components/GridButton.tsx";
+import ItemsContent from "./ItemsContent.tsx";
 
 const RightMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -22,13 +20,11 @@ const RightMenu = () => {
 
     return (
         <div className={'sidebar'}>
-            <SideContentMenu side={"right"} isOpen={isOpen} minWidth={200} maxWidth={400}>
-                {activeButton === 'settings' && <SettingsContent/>}
-                {activeButton === 'architecture' && <ArchitectureContent/>}
+            <SideContentMenu side={"right"} isOpen={isOpen} minWidth={200} maxWidth={300} defaultWidth={200}>
+                {activeButton === 'grid' && <ItemsContent/>}
             </SideContentMenu>
             <SideIconMenu>
-                <LayersButton onClick={() => handleButtonClick('architecture')} isOpen={isOpen && activeButton === 'architecture'} />
-                <SettingsButton onClick={() => handleButtonClick('settings')} isOpen={isOpen && activeButton === 'settings'} />
+                <GridButton onClick={() => handleButtonClick('grid')} isOpen={isOpen && activeButton === 'grid'}/>
             </SideIconMenu>
         </div>
     );

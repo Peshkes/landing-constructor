@@ -8,9 +8,14 @@
     --primary-color-2: #2e9eff;
     --primary-color-3: #45a7fb;
 
+    --background-color-0: #1b1d1e;
     --background-color-1: #212224;
     --background-color-2: #38383B;
     --background-color-3: #454548;
     --background-color-4: #525255;
+
+    --text-color-1: #ffffff;
+    --text-color-2: #d1d1d1;
+    --text-color-3: #9f9f9f;
 }
 

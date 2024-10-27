@@ -6,12 +6,13 @@ type Props = {
     side: "left" | "right";
     minWidth: number;
     maxWidth: number;
+    defaultWidth: number;
     children?: ReactNode;
 };
 
-const SideContentMenu = ({ isOpen, side, minWidth, maxWidth, children }: Props) => {
+const SideContentMenu = ({ isOpen, side, minWidth, maxWidth, defaultWidth, children }: Props) => {
     const menuRef = useRef<HTMLDivElement>(null);
-    const [currentWidth, setCurrentWidth] = useState(minWidth);
+    const [currentWidth, setCurrentWidth] = useState(defaultWidth);
 
     const handleMouseDown = useCallback((e: React.MouseEvent) => {
         e.preventDefault();

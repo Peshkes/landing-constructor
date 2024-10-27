@@ -1,0 +1,40 @@
+.block {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    border-bottom: var(--background-color-1) 1px solid;
+}
+
+.block:last-child {
+    border-bottom: none;
+}
+
+.activeLine {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background-color: var(--primary-color-1);
+    display: none;
+}
+
+.active .activeLine {
+    display: block;
+}
+
+.block p {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.arrow {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.rotated {
+    transform: rotate(90deg);
+}

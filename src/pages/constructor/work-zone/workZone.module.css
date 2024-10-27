@@ -1,6 +1,46 @@
-.workzone{
-    display: flex;
+.workzone {
+    position: relative;
     flex: 1;
+    display: flex;
     flex-direction: column;
     background-color: var(--background-color-1);
+    padding: 30px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+/* Стили для скроллбара */
+.workzone::-webkit-scrollbar {
+    width: 8px;
+}
+
+.workzone::-webkit-scrollbar-thumb {
+    background-color: var(--background-color-3);
+    border-radius: 10px;
+}
+
+.workzone::-webkit-scrollbar-thumb:hover {
+    background-color: var(--background-color-4);
+}
+
+.workzone::-webkit-scrollbar-track {
+    background: var(--background-color-0);
+}
+
+.addZone {
+    padding: 50px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--background-color-4);
+    border-radius: 8px;
+    color: var(--text-color-3);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.addZone:hover, .addZone:-moz-drag-over {
+    background-color: var(--background-color-3);
 }

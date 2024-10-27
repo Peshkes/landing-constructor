@@ -1,16 +1,58 @@
 import {create} from "zustand";
-import {ConstructorStore} from "./types.ts";
+import {OfferBlock, ConstructorStore, Offer} from "./types.ts";
+
+const template: Offer = {
+    id: "asdasd-asdasdasd-asdasd-adsdas",
+    name: "Template Offer",
+    status: "draft",
+    body: [
+        {
+            id: "ccccccc",
+            type: "Шапки",
+            block_code: "HEAD-TEST",
+            settings: {
+                title: "MyHeader",
+                backgroundColor: "#000000",
+                textColor: "#ffffff",
+                image: "",
+            }
+        },
+        {
+            id: "aaaaaaa",
+            type: "Шапки",
+            block_code: "HEAD-TEST",
+            settings: {
+                title: "Header",
+                backgroundColor: "#000000",
+                textColor: "#ffffff",
+                image: "",
+            }
+        },
+        {
+            id: "bbbbbbb",
+            type: "Шапки",
+            block_code: "HEAD-TEST",
+            settings: {
+                title: "Header",
+                backgroundColor: "#000000",
+                textColor: "#ffffff",
+                image: "",
+            }
+        },
+    ]
+};
 
 const useConstructor = create<ConstructorStore>((set, get) => ({
-    offer: null,
+    offer: template,
     status: "not saved",
-    addBlock: (orderNumber, block) => {
+    addBlock: (orderNumber, block: OfferBlock) => {
         const offer = get().offer!;
         const updatedBody = [...offer.body];
-        if (orderNumber >= 0 && orderNumber <= updatedBody.length) {
+        if (orderNumber === null)
+            updatedBody.push(block);
+        else if (orderNumber >= 0 && orderNumber <= updatedBody.length)
             updatedBody.splice(orderNumber, 0, block);
-            set({offer: {...offer, body: updatedBody}});
-        }
+        set({offer: {...offer, body: updatedBody}});
     },
 
     removeBlock: (orderNumber) => {

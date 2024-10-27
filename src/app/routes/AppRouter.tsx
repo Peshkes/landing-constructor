@@ -1,9 +1,10 @@
 import {Route, Routes} from "react-router-dom";
-import LandingPage from "../../pages/landing/LandingPage.tsx";
-import PanelPage from "../../pages/panel/PanelPage.tsx";
-import ConstructorPage from "../../pages/constructor/ConstructorPage.tsx";
-import OfferPage from "../../pages/offer/OfferPage.tsx";
-import ErrorPage from "../../pages/error/ErrorPage.tsx";
+import React from "react";
+const LandingPage = React.lazy(() => import("../../pages/landing/LandingPage.tsx"));
+const PanelPage = React.lazy(() => import("../../pages/panel/PanelPage.tsx"));
+const ConstructorPage = React.lazy(() => import("../../pages/constructor/ConstructorPage.tsx"));
+const OfferPage = React.lazy(() => import("../../pages/offer/OfferPage.tsx"));
+const ErrorPage = React.lazy(() => import("../../pages/error/ErrorPage.tsx"));
 
 const AppRouter = () => {
     return (

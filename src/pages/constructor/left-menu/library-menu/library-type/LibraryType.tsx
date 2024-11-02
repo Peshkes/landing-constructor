@@ -11,7 +11,7 @@ type Props = {
 const LibraryType = ({ type, isActive, onClick, isExtended }: Props) => {
     return (
         <div onClick={() => onClick(type as keyof Library)}
-             className={`${style.block} ${isActive ? style.active : ""}`}>
+             className={`${style.block} no-select ${isActive ? style.active : ""}`}>
             {!isExtended && (
                 <span className={`${style.arrow} ${isActive ? style.rotated : ""}`}>{">"}</span>
             )}

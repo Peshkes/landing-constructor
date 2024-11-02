@@ -33,6 +33,7 @@ export const blocksLibrary: Library = [
                     backgroundColor: "#ff8484",
                     textColor: "#000000",
                     image: getRandomImageURL(),
+                    lines: []
                 }
             },
         ]

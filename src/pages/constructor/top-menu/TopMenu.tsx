@@ -1,11 +1,9 @@
 import style from "./topMenu.module.css";
 import MenuButton from "../../../shared/ui/menu-button/MenuButton.tsx";
 import useConstructor from "../../../features/constructor/useConstructor.ts";
-import useOffers from "../../../features/offers/useOffers.ts";
 
 const TopMenu = () => {
     const {status, offer} = useConstructor();
-    const {getStatusById} = useOffers();
 
     return (
         <div className={style.block}>
@@ -13,7 +11,7 @@ const TopMenu = () => {
                 Хлебные крошки
             </div>
             <div className={style.center}>
-                <p>Статус: {getStatusById(offer!.id)} ({status})</p>
+                <p>Статус: {offer?.status} ({status})</p>
             </div>
             <div className={style.right}>
                 <MenuButton onClick={()=>{}}> <p>Опубликовать</p> </MenuButton>

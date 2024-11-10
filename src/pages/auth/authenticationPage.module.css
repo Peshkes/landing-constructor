@@ -1,0 +1,40 @@
+.page{
+    background-color: var(--background-color-0);
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.block{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 582px;
+}
+
+.leftBlock, .rightBlock{
+    width: 50%;
+}
+
+.leftBlock{
+    background-color: var(--background-color-1);
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.rightBlock{
+    background-color: var(--background-color-2);
+}
+
+.rightBlock > img{
+    width: 100%;
+    border-radius: 0 16px 16px 0;
+    height: 100%;
+}

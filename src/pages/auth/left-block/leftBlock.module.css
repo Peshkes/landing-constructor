@@ -1,0 +1,16 @@
+.leftBlock{
+    width: 326px;
+    color: var(--text-color-4);
+}
+
+.leftBlock h2{
+    margin-top: 0;
+}
+
+.leftBlock span{
+    cursor: pointer;
+}
+
+.active{
+    color: var(--text-color-1);
+}

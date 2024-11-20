@@ -1,4 +1,4 @@
-import gridSVG from '../images/grid.svg';
+import gridSVG from '../images/icons/grid.svg';
 import MenuButton from "../ui/menu-button/MenuButton.tsx";
 
 const GridButton = ({ isOpen, onClick }: { isOpen: boolean, onClick: () => void }) => {

@@ -1,5 +1,6 @@
 import styles from "./authenticationPage.module.css";
 import LeftBlock from "./left-block/LeftBlock.tsx";
+import authPhoto from "../../shared/images/auth/authPhoto.webp";
 
 const AuthenticationPage = () => {
     return (
@@ -9,7 +10,7 @@ const AuthenticationPage = () => {
                     <LeftBlock/>
                 </div>
                 <div className={styles.rightBlock}>
-                    <img src="..." alt="logo"/>
+                    <img src={authPhoto} alt="logo"/>
                 </div>
             </div>
         </div>

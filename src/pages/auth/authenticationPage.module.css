@@ -9,8 +9,8 @@
 .block{
     display: flex;
     flex-direction: row;
-    width: 100%;
-    max-width: 800px;
+    margin: 0 auto;
+    max-width: 1000px;
     border-radius: 16px;
     overflow: hidden;
     height: 582px;
@@ -37,4 +37,41 @@
     width: 100%;
     border-radius: 0 16px 16px 0;
     height: 100%;
+    object-fit: cover;
+    object-position: right;
+}
+
+@media screen and (max-width: 828px) {
+    .page{
+        padding: 5%;
+    }
+    .block{
+        height: 100%;
+        border-radius: 16px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 500px;
+    }
+
+    .leftBlock{
+        border-radius: 16px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .rightBlock{
+        box-sizing: border-box;
+        z-index: 0;
+    }
+
+    .rightBlock, .rightBlock > img{
+        border-radius: 0 0 16px 16px;
+        width: 100%;
+    }
+
+    .rightBlock > img{
+        object-fit: fill;
+    }
+
 }

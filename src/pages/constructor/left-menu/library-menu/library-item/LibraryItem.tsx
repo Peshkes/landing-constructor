@@ -1,8 +1,8 @@
 import {useRef} from "react";
-import {draggableTypes} from "../../../../../features/constructor/constants.ts";
 import {useDrag} from "react-dnd";
 import style from "./libraryItem.module.css";
 import {BlockSettings} from "../../../../../features/constructor/types.ts";
+import {draggableTypes} from "../../../../../features/constructor/constructorSettings.ts";
 
 type Props = {
     category: string,

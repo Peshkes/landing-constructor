@@ -3,8 +3,10 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {authenticationValidationSchema} from "./authenticationValidation.ts";
 import Form from "../../../shared/ui/form/Form.tsx";
 import Input from "../../../shared/ui/input/Input.tsx";
+import useAuthentication from "../../../features/authentication/useAuthentication.ts";
 
 const AuthenticationForm = () => {
+    const {login} = useAuthentication();
     const {
         register,
         handleSubmit,
@@ -15,6 +17,7 @@ const AuthenticationForm = () => {
 
     const onSubmit = (data: FieldValues) => {
         console.log('Авторизационные данные:', data);
+        login(data.email, data.password);
     };
     return (
         <Form

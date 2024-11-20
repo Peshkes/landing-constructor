@@ -1,9 +1,9 @@
 import {useEffect, useRef, useState} from "react";
 import style from "./library-menu.module.css";
 import {Library} from "../../../../features/constructor/types.ts";
-import {blocksLibrary} from "../../../../features/constructor/constants.ts";
 import LibraryType from "./library-type/LibraryType.tsx";
 import LibraryItem from "./library-item/LibraryItem.tsx";
+import {blocksLibrary} from "../../../../features/constructor/blockLibrary.ts";
 
 const LibraryMenu = () => {
     const [isExpanded, setIsExpanded] = useState(false);

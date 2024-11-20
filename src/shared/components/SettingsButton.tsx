@@ -1,5 +1,5 @@
 import MenuButton from "../ui/menu-button/MenuButton.tsx";
-import settingsSVG from "../images/adjustment.svg";
+import settingsSVG from "../images/icons/adjustment.svg";
 
 const SettingsButton = ({ isOpen, onClick }: { isOpen: boolean, onClick: () => void }) => {
     return (

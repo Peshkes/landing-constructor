@@ -1,7 +1,9 @@
 export type AuthenticationStore = {
     isAuthenticated: boolean,
-    login: () => void,
+    login: (email: string, password: string) => void,
     logout: () => void,
+    registrate: (name: string, email: string, password: string) => void,
+    getCsrf: () => Promise<boolean>
 }
 
 export type AuthenticationFormData = {
@@ -13,3 +15,7 @@ export type RegistrationFormData = {
     name: string,
     confirmPassword: string
 } & AuthenticationFormData
+
+export type csrfResponse = {
+    csrfToken: string
+}

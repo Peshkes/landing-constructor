@@ -1,10 +1,10 @@
 import style from './workZone.module.css';
 import {useDrop} from "react-dnd";
-import {draggableTypes} from "../../../features/constructor/constants.ts";
 import useConstructor from "../../../features/constructor/useConstructor.ts";
-import BlockOfWorkZone from "./BlockOfWorkZone.tsx";
+import BlockOfWorkZone from "./block-of-workzone/BlockOfWorkZone.tsx";
 import {createOfferBlock} from "../../../shared/functions.ts";
 import {DraggableComponentData} from "../../../features/constructor/types.ts";
+import {draggableTypes} from "../../../features/constructor/constructorSettings.ts";
 
 const WorkZone = () => {
     const {offer, addBlock} = useConstructor();

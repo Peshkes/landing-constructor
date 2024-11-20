@@ -1,4 +1,4 @@
-import layersSVG from '../images/layers.svg';
+import layersSVG from '../images/icons/layers.svg';
 import MenuButton from "../ui/menu-button/MenuButton.tsx";
 
 const LayersButton = ({ isOpen, onClick }: { isOpen: boolean, onClick: () => void }) => {

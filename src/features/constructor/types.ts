@@ -4,10 +4,15 @@ import React from "react";
 export type ConstructorStore = {
     status: ConstructorStatus,
     offer: Offer | null,
+
+    selectedBlock: string | null,
+    selectBlock: (block: string | null) => void,
+
     addBlock: (orderNumber: number | null, block: OfferBlock) => void,
     removeBlock: (orderNumber: number, block: OfferBlock) => void,
     updateBlock: (borderNumber: number, lock: OfferBlock) => void,
     moveBlock: (from: number, to: number) => void,
+
     saveOffer: (offer: Offer) => void,
     publishOffer: (offer: Offer) => void,
 }

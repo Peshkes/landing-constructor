@@ -8,6 +8,15 @@
     color: var(--text-color-1);
     background-color: var(--background-color-3);
     padding: 10px;
+    cursor: pointer;
+}
+
+.block:hover{
+    background-color: var(--background-color-4);
+}
+
+.block.active{
+    background-color: var(--primary-color-1);
 }
 
 .block > div:first-child{
@@ -19,4 +28,9 @@
     text-align: right;
     color: var(--text-color-3);
     font-size: 12px;
+}
+
+
+.block.active > div:last-child{
+    color: var(--text-color-2);
 }

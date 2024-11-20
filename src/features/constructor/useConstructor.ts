@@ -45,6 +45,10 @@ const template: Offer = {
 const useConstructor = create<ConstructorStore>((set, get) => ({
     offer: template,
     status: "not saved",
+
+    selectedBlock: null,
+    selectBlock: (block) => set({selectedBlock: block}),
+
     addBlock: (orderNumber, block: OfferBlock) => {
         const offer = get().offer!;
         const updatedBody = [...offer.body];
@@ -82,6 +86,7 @@ const useConstructor = create<ConstructorStore>((set, get) => ({
             set({offer: {...offer, body: updatedBody}});
         }
     },
+
     saveOffer: (offer) => {
         console.log(offer)
     }, //TODO save offer

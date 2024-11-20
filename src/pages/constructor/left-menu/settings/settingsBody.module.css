@@ -1,0 +1,16 @@
+.empty{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--text-color-3);
+    height: 100%;
+    width: 100%;
+}
+
+.settingsBody {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+}

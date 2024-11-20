@@ -1,0 +1,24 @@
+.trashZone {
+    padding: 20px 40px;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--background-color-4);
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.trashZone svg {
+    width: 35px;
+    height: 35px;
+    fill: var(--background-color-4);
+}
+
+.isActive {
+    border: 2px dashed var(--error-color);
+}
+
+.isActive svg {
+    fill: var(--error-color);
+}

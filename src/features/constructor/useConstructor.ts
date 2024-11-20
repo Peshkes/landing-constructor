@@ -1,4 +1,4 @@
-import {create} from "zustand";
+ import {create} from "zustand";
 import {OfferBlock, ConstructorStore, Offer} from "./types.ts";
 
 const template: Offer = {
@@ -48,6 +48,9 @@ const useConstructor = create<ConstructorStore>((set, get) => ({
 
     selectedBlock: null,
     selectBlock: (block) => set({selectedBlock: block}),
+    getSelectedBlock: () => {
+        return get().offer?.body.find(block => block.id === get().selectedBlock);
+    },
 
     addBlock: (orderNumber, block: OfferBlock) => {
         const offer = get().offer!;
@@ -75,6 +78,25 @@ const useConstructor = create<ConstructorStore>((set, get) => ({
             updatedBody[orderNumber] = updatedBlock;
             set({offer: {...offer, body: updatedBody}});
         }
+    },
+
+    updateSelectedBlockField: (fieldName: string, newValue: any) => {
+        const offer = get().offer!;
+        const selected = get().selectedBlock;
+        if (!selected) return;
+        const updatedBody = offer.body.map((block) => {
+            if (block.id === selected) {
+                return {
+                    ...block,
+                    settings: {
+                        ...block.settings,
+                        [fieldName]: newValue,
+                    },
+                };
+            }
+            return block;
+        });
+        set({ offer: { ...offer, body: updatedBody } });
     },
 
     moveBlock: (from, to) => {

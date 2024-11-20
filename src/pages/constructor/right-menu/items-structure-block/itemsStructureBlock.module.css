@@ -30,7 +30,52 @@
     font-size: 12px;
 }
 
-
 .block.active > div:last-child{
     color: var(--text-color-2);
+}
+
+.shaking{
+    animation: shake 0.3s infinite;
+    background-color: var(--error-color) !important;
+}
+
+.shaking > div:last-child{
+    color: white !important;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-2px);
+    }
+    50% {
+        transform: translateX(2px);
+    }
+    75% {
+        transform: translateX(-2px);
+    }
+}
+
+.contextMenu {
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    z-index: 1000;
+    padding: 5px;
+}
+
+.contextMenu button {
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+}
+
+.contextMenu button:hover {
+    background: #f0f0f0;
 }

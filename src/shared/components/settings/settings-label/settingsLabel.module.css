@@ -1,0 +1,6 @@
+.label {
+    display: flex;
+    color: var(--text-color-2);
+    align-items: center;
+    gap: 16px;
+}

@@ -7,14 +7,21 @@ export type ConstructorStore = {
 
     selectedBlock: string | null,
     selectBlock: (block: string | null) => void,
+    getSelectedBlock: () => OfferBlock | undefined,
+    updateSelectedBlockField: (fieldName: string, newValue: any) => void,
 
     addBlock: (orderNumber: number | null, block: OfferBlock) => void,
-    removeBlock: (orderNumber: number, block: OfferBlock) => void,
+    removeBlock: (orderNumber: number) => void,
     updateBlock: (borderNumber: number, lock: OfferBlock) => void,
     moveBlock: (from: number, to: number) => void,
 
     saveOffer: (offer: Offer) => void,
     publishOffer: (offer: Offer) => void,
+}
+
+export type AnimateStore = {
+    blockIsOnTheTrash: number | null,
+    setBlockOnTheTrash: (order: number | null) => void,
 }
 
 export type Offer = OfferPreview & {

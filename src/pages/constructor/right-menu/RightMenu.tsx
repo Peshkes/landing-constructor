@@ -2,7 +2,7 @@ import {useState} from "react";
 import SideIconMenu from "../side-icon-menu/SideIconMenu.tsx";
 import SideContentMenu from "../side-content-menu/SideContentMenu.tsx";
 import GridButton from "../../../shared/components/GridButton.tsx";
-import ItemsContent from "./ItemsContent.tsx";
+import ItemsContent from "./item-content/ItemsContent.tsx";
 
 const RightMenu = () => {
     const [isOpen, setIsOpen] = useState(false);

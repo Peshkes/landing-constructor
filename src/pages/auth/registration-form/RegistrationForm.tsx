@@ -1,8 +1,8 @@
 import {FieldValues, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {registrationValidationSchema} from "./registrationValidation.ts";
-import Input from "../../../shared/ui/input/Input.tsx";
-import Form from "../../../shared/ui/form/Form.tsx";
+import AuthInput from "../auth-input/AuthInput.tsx";
+import AuthForm from "../auth-form/AuthForm.tsx";
 
 const RegistrationForm  = () => {
     const {
@@ -18,39 +18,39 @@ const RegistrationForm  = () => {
     };
 
     return (
-        <Form
+        <AuthForm
             onSubmit={onSubmit}
             handleSubmit={handleSubmit}
             isSubmitting={isSubmitting}
         >
-            <Input
+            <AuthInput
                 id="name"
                 label="Имя пользователя"
                 register={register}
                 error={errors.name}
             />
-            <Input
+            <AuthInput
                 id="email"
                 label="Электронная почта"
                 type="email"
                 register={register}
                 error={errors.email}
             />
-            <Input
+            <AuthInput
                 id="password"
                 label="Пароль"
                 type="password"
                 register={register}
                 error={errors.password}
             />
-            <Input
+            <AuthInput
                 id="confirmPassword"
                 label="Подтвердите пароль"
                 type="password"
                 register={register}
                 error={errors.confirmPassword}
             />
-        </Form>
+        </AuthForm>
     );
 };
 

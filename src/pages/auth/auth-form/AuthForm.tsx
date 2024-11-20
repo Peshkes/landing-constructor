@@ -9,7 +9,7 @@ type FormProps = {
     children: ReactNode;
 };
 
-const Form = ({ isSubmitting, onSubmit, handleSubmit, children }: FormProps) => {
+const AuthForm = ({ isSubmitting, onSubmit, handleSubmit, children }: FormProps) => {
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
             {children}
@@ -24,4 +24,4 @@ const Form = ({ isSubmitting, onSubmit, handleSubmit, children }: FormProps) => 
     );
 };
 
-export default Form;
+export default AuthForm;

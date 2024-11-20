@@ -1,5 +1,5 @@
 import {FieldError, FieldValues, Path, UseFormRegister} from 'react-hook-form';
-import styles from './Input.module.css';
+import styles from './input.module.css';
 
 type Props<T extends FieldValues> = {
     id: Path<T>;
@@ -10,7 +10,7 @@ type Props<T extends FieldValues> = {
 };
 
 
-const Input = <T extends FieldValues>({id, type = 'text', register, label, error}: Props<T>) => {
+const AuthInput = <T extends FieldValues>({id, type = 'text', register, label, error}: Props<T>) => {
     return (
         <div>
             <input
@@ -25,4 +25,4 @@ const Input = <T extends FieldValues>({id, type = 'text', register, label, error
     );
 };
 
-export default Input;
+export default AuthInput;

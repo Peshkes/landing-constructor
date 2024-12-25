@@ -1,0 +1,36 @@
+.rightMenu{
+    display: flex;
+    border-left: 2px solid var(--background-color-2);
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    color: var(--text-color-1);
+}
+
+.rightMenu > div{
+    padding: 40px 0 40px 40px;
+}
+
+.rightMenu h2{
+    font-size: 40px;
+}
+
+.rightMenu h3, .rightMenu h2{
+    margin: 0 0 20px 0;
+}
+
+.header{
+    padding-top: 0 !important;
+    border-bottom: 2px solid var(--background-color-2);
+}
+
+.people{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.offers{
+    padding-bottom: 0 !important;
+}

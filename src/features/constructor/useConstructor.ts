@@ -5,6 +5,7 @@ const template: Offer = {
     id: "asdasd-asdasdasd-asdasd-adsdas",
     name: "Template Offer",
     status: "draft",
+    views: 4,
     body: [
         {
             id: "ccccccc",
@@ -38,8 +39,12 @@ const template: Offer = {
                 textColor: "#ffffff",
                 image: "",
             }
-        },
-    ]
+        }
+    ],
+    settings: {
+        backgroundColor: "#999999",
+        customPageCss: {border: "5px solid green"},
+    }
 };
 
 const useConstructor = create<ConstructorStore>((set, get) => ({
@@ -50,6 +55,19 @@ const useConstructor = create<ConstructorStore>((set, get) => ({
     selectBlock: (block) => set({selectedBlock: block}),
     getSelectedBlock: () => {
         return get().offer?.body.find(block => block.id === get().selectedBlock);
+    },
+
+    updateOfferSettings: (key: string, newValue: any) => {
+        set((state) => {
+            const updatedOffer = {
+                ...state.offer,
+                settings: {
+                    ...state.offer!.settings,
+                    [key]: newValue,
+                },
+            };
+            return { offer: updatedOffer } as Partial<ConstructorStore>;
+        });
     },
 
     addBlock: (orderNumber, block: OfferBlock) => {

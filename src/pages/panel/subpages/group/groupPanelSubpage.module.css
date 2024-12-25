@@ -1,0 +1,14 @@
+.page{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.leftMenu{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 500px;
+    padding-right: 40px;
+}

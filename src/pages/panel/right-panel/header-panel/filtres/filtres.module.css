@@ -1,0 +1,51 @@
+.block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 20px 0;
+    color: var(--text-color-1);
+}
+
+.block p{
+    margin: 0;
+}
+
+.block > div {
+    display: flex;
+    align-items: center;
+}
+
+.sorting{
+    gap: 10px;
+}
+
+.filters{
+    gap: 20px;
+}
+
+.filters:first-of-type{
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.filter{
+    padding: 10px;
+    border-radius: 8px;
+    background-color: var(--background-color-2);
+    cursor: pointer;
+}
+
+.filter:hover{
+    background-color: var(--background-color-3);
+}
+
+.filter.active{
+    background-color: var(--primary-color-1);
+}
+
+.filters > div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

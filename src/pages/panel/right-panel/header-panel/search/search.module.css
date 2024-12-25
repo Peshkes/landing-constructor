@@ -1,0 +1,22 @@
+.block{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.block button{
+    margin-left: -55px;
+}
+
+.block img{
+    width: 50%;
+}
+
+.block input {
+    color: var(--text-color-1);
+    outline: none;
+    padding: 13px 50px 13px 13px;
+    border: 1px solid var(--text-color-1);
+    border-radius: 10px;
+    background-color: transparent;
+}

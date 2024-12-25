@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import ColorPicker from '@rc-component/color-picker';
 import '@rc-component/color-picker/assets/index.css';
-import SettingsInput, {SettingsInputProps} from "../settings-input/SettingsInput.tsx";
+import SettingsInput, {SettingsInputProps} from "../SettingsInput.tsx";
 import styles from "./colorPickerInput.module.css";
 
 const ColorPickerInput = ({label, value, onChange}: SettingsInputProps) => {

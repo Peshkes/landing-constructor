@@ -4,6 +4,7 @@ html, body {
     height: 100dvh;
     margin: 0;
     font-family: Arial, sans-serif;
+    background-color: var(--background-color-0);
 }
 
 #root {
@@ -23,6 +24,10 @@ html, body {
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+.box-sizing{
+    box-sizing: border-box;
 }
 
 .sidebar {

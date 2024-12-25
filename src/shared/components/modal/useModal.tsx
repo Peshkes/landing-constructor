@@ -7,14 +7,15 @@ type UseModalReturnType = {
     isOpen: boolean;
     openModal: () => void;
     closeModal: () => void;
-    setMessage: (message: string, type: MessageType) => void;  // Теперь передаем и тип сообщения
+    setMessage: (message: string, type: MessageType) => void;
+    openMessage: (message: string, type: MessageType) => void;
     Modal: ({ children }: { children?: ReactNode }) => ReactNode;
 };
 
 const useModal = (): UseModalReturnType => {
     const [isOpen, setIsOpen] = useState(false);
-    const [message, setMessage] = useState<string>('');  // Сообщение
-    const [messageType, setMessageType] = useState<MessageType>('info'); // Тип сообщения
+    const [message, setMessage] = useState<string>('');
+    const [messageType, setMessageType] = useState<MessageType>('info');
 
     const openModal = useCallback(() => setIsOpen(true), []);
     const closeModal = useCallback(() => setIsOpen(false), []);
@@ -24,6 +25,11 @@ const useModal = (): UseModalReturnType => {
         setMessageType(type);
     }, []);
 
+    const openMessage = useCallback((message: string, messageType: MessageType) => {
+        setMessageHandler(message, messageType);
+        setIsOpen(true)
+    }, [setMessageHandler]);
+
     const ModalComponent = ({ children }: { children?: ReactNode }) => (
         <Modal isOpen={isOpen} onClose={closeModal} type={messageType}>
             <div>
@@ -32,7 +38,7 @@ const useModal = (): UseModalReturnType => {
         </Modal>
     );
 
-    return { isOpen, openModal, closeModal, setMessage: setMessageHandler, Modal: ModalComponent };
+    return { isOpen, openModal, closeModal, openMessage, setMessage: setMessageHandler, Modal: ModalComponent };
 };
 
 export default useModal;

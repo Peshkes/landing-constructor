@@ -18,7 +18,7 @@ export class RequestService {
         delete this.globalHeaders[key];
     };
 
-    public static async handleRequest<R>(requestPromise: Promise<R>, endpoint: string): Promise<R | void> {
+    public static async handleRequest<R>(requestPromise: Promise<R>, endpoint: string): Promise<R> {
         try {
             const response = await requestPromise;
             this.logSuccess(endpoint, response);
@@ -48,11 +48,12 @@ export class RequestService {
                 headers,
                 body: data ? JSON.stringify(data) : undefined,
                 signal,
+                credentials: 'include',
             });
 
             if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorText}`);
+                const error = await response.json();
+                throw new Error(`HTTP error! Status: ${response.status}, Message: ${error.message}`);
             }
 
             if (response.status === 204 || response.headers.get('Content-Length') === '0') {
@@ -66,11 +67,7 @@ export class RequestService {
 
             return (await response.text()) as unknown as R;
         } catch (error: any) {
-            if (error.name === 'AbortError') {
-                console.error(`Request to ${endpoint} was aborted`);
-            } else {
-                console.error(`Error ${method} ${endpoint}:`, error);
-            }
+            if (error.name === 'AbortError') console.error(`Request to ${endpoint} was aborted`);
             throw error;
         }
     }
@@ -107,6 +104,28 @@ export class RequestService {
                 throw error;
             }
         }
+    }
+
+    public static processRequest = async <D, R>(
+        endpoint: string,
+        method: string = 'GET',
+        data?: D,
+        signal?: AbortSignal,
+        customHeaders: Record<string, string> = {}
+    ): Promise<R> => {
+        const requestPromise = this.sendRequest<D, R>(endpoint, method, data, signal, customHeaders);
+        return this.handleRequest<R>(requestPromise, endpoint);
+    }
+
+    public static processSecureRequest = async <D, R>(
+        endpoint: string,
+        method: string = 'GET',
+        data?: D,
+        signal?: AbortSignal,
+        customHeaders: Record<string, string> = {}
+    ): Promise<R> => {
+        const requestPromise = this.sendSecureRequest<D, R>(endpoint, method, data, signal, customHeaders);
+        return this.handleRequest<R>(requestPromise, endpoint);
     }
 
     private static logSuccess(endpoint: string, response: any): void {

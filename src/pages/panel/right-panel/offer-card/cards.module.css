@@ -1,0 +1,88 @@
+.card{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--background-color-3);
+    border-radius: 8px;
+    color: var(--text-color-1);
+    cursor: pointer;
+    height: 100px;
+    position: relative;
+}
+
+.card:hover{
+    background-color: var(--background-color-4);
+}
+
+.card img{
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.centerHeader{
+    text-align: left;
+    flex: 1;
+    padding: 0 20px;
+}
+
+.badge{
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.rightBlock{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    height: 100%;
+}
+
+.rightBlock p{
+    margin: 0;
+    font-size: 14px;
+}
+
+.published .badge{
+    background-color: var(--primary-color-1);
+}
+
+.draft .rightBlock{
+    justify-content: center;
+}
+
+.draft .badge{
+    background-color: var(--background-color-2);
+}
+
+.archived{
+    background-color: var(--background-color-1);
+    color: var(--text-color-3);
+}
+
+.archived:hover{
+    background-color: var(--background-color-2);
+}
+
+.archived .badge{
+    background-color: var(--background-color-0);
+    color: var(--text-color-4);
+}
+
+.archived:hover .badge{
+    background-color: var(--background-color-1);
+}
+
+.archived img{
+    filter: brightness(0.5);
+}
+
+.user .rightBlock div, .moderator .rightBlock div, .admin .rightBlock div{
+    background-color: var(--primary-color-3);
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 0 8px 0 8px;
+}

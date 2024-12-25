@@ -1,7 +1,7 @@
 import {useState} from "react";
 import SideIconMenu from "../side-icon-menu/SideIconMenu.tsx";
-import SideContentMenu from "../side-content-menu/SideContentMenu.tsx";
-import GridButton from "../../../shared/components/GridButton.tsx";
+import SideContentMenu from "../../../shared/components/side-content-menu/SideContentMenu.tsx";
+import GridButton from "../../../shared/components/buttons/GridButton.tsx";
 import ItemsContent from "./item-content/ItemsContent.tsx";
 
 const RightMenu = () => {

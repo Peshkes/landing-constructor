@@ -1,0 +1,34 @@
+.panel{
+    height: 100%;
+}
+
+.panel > div {
+    height: 100%;
+}
+
+.panel > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.topSide, .botSide {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.panel > div > div > button, .panel > div > div > a {
+    width: Calc(100% - 14%);
+    margin: 0 7%;
+    padding: 15px;
+    padding-left: 8% !important;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 7%;
+    box-sizing: border-box;
+    text-decoration: none;
+}

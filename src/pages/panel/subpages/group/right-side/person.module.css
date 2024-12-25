@@ -1,0 +1,45 @@
+.person{
+    padding: 5px 10px;
+}
+
+.wrapper:hover .extendedBlock{
+    display: block;
+}
+
+.person p{
+    margin: 0;
+}
+
+.wrapper{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 8px;
+}
+
+.extendedBlock{
+    display: none;
+    padding: 5px;
+    position: absolute;
+    z-index: 50;
+    border-radius: 10px;
+    width: max-content;
+    background-color: inherit;
+}
+
+.extendedBlock p{
+    margin: 5px;
+}
+
+.admin{
+    background-color: var(--primary-color-1);
+}
+
+.moderator{
+    background-color: var(--background-color-4);
+}
+
+.user{
+    background-color: var(--text-color-4);
+}

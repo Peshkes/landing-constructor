@@ -1,9 +1,11 @@
-import {OfferPreview} from "../offers/types.ts";
+import {OfferPreview} from "../panel/types.ts";
 import React from "react";
 
 export type ConstructorStore = {
     status: ConstructorStatus,
     offer: Offer | null,
+
+    updateOfferSettings: (key: string, newValue: any) => void,
 
     selectedBlock: string | null,
     selectBlock: (block: string | null) => void,
@@ -25,8 +27,16 @@ export type AnimateStore = {
 }
 
 export type Offer = OfferPreview & {
-    body: Array<OfferBlock>
+    body: Array<OfferBlock>,
+    settings: OfferSettings,
 };
+
+export type OfferSettings = {
+    backgroundColor?: string,
+    customPageCss?: object,
+    customContentCss?: object,
+    [key: string]: any,
+}
 
 export type ConstructorStatus = "saved" | "not saved";
 

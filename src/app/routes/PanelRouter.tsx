@@ -9,7 +9,9 @@ const PanelRouter = () => {
         <Routes>
             <Route path="/" element={<RecentlyPanelSubpage/>}/>
             <Route path="/offers" element={<OffersPanelSubpage/>}/>
-            <Route path="/groups" element={<GroupPanelSubpage/>}/>
+            <Route path="/groups" element={<GroupPanelSubpage/>}>
+                <Route path=":id" element={<GroupPanelSubpage/>}/>
+            </Route>
             <Route path="/profile" element={<ProfilePanelSubpage/>}/>
             <Route path="*" element={<RecentlyPanelSubpage/>}/>
         </Routes>

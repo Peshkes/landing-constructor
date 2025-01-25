@@ -9,6 +9,10 @@ export const registrationValidationSchema = yup.object().shape({
         .string()
         .email('Некорректный адрес электронной почты')
         .required('Электронная почта обязательна'),
+    phone: yup
+        .string()
+        .matches(/^(\+7|7|8)?[\s-]?\(?[489][0-9]{2}\)?[\s-]?[0-9]{3}[\s-]?[0-9]{2}[\s-]?[0-9]{2}$/, 'Некорректный номер телефона')
+        .required('Телефон обязателен'),
     password: yup
         .string()
         .min(8, 'Пароль должен содержать минимум 8 символов')

@@ -1,6 +1,7 @@
 export type OffersStore = {
     offerPreviews: OfferPreview[],
     groupAccesses: GroupAccess[],
+    selectedGroupId: string,
     selectedGroup : Group
 };
 

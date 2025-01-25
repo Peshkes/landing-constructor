@@ -27,8 +27,7 @@ const AppRouter = () => {
                 <Route path="*" element={<ErrorPage/>}/>
 
                 <Route path="/panel/*" element={<ProtectedRoute isAuthenticated={!!user} element={<PanelPage/>} />}/>
-                <Route path="/constructor/:id?" element={<ProtectedRoute isAuthenticated={!!user} element={<ConstructorPage />} />}
-                />
+                <Route path="/constructor/:id?" element={<ProtectedRoute isAuthenticated={!!user} element={<ConstructorPage />} />}/>
             </Routes>
         </Suspense>
     );

@@ -10,7 +10,7 @@ import RecentlyLink from "../../../shared/components/links/RecentlyLink.tsx";
 import MenuLink from "../../../shared/ui/menu-button-link/MenuLink.tsx";
 
 const LeftPanelContent = () => {
-    const {user} = useAuthentication();
+    const user = useAuthentication(state => state.user);
     return (
         <>
             <div className={styles.topSide}>

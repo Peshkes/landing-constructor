@@ -4,18 +4,29 @@ import {useEffect, useState} from "react";
 import useModal from "../shared/components/modal/useModal.tsx";
 import Loader from "../shared/components/loader/Loader.tsx";
 import {AuthApi} from "../features/authentication/AuthApi.ts";
+import useAuthentication from "../features/authentication/useAuthentication.ts";
 
 function App() {
+    const softLogin = useAuthentication(state => state.softLogin);
     const [loading, setLoading] = useState(true);
     const {Modal, openMessage} = useModal();
 
     useEffect(() => {
-        AuthApi.getCsrf().then((res) => {
+        const fetchData = async () => {
+            try {
+                const res = await AuthApi.getCsrf();
                 setLoading(!res);
                 if (!res) openMessage(`Не удалось получить токен для подключения к серверу. Вероятно, сайт не работает`, 'error');
+            } catch (error) {
+                openMessage('Error:' + error, 'error');
             }
-        ).catch((error) => openMessage('Error:' + error, 'error'))
-    }, [openMessage]);
+
+            const lastReload = localStorage.getItem('lastRefresh');
+            if (lastReload && new Date(lastReload) > new Date(new Date().getTime() - 19 * 60 * 1000)) await softLogin();
+        };
+
+        fetchData();
+    }, [openMessage, softLogin]);
 
     return (
         <div className={"app"}>

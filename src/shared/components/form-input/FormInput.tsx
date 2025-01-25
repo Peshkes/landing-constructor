@@ -10,7 +10,7 @@ type Props<T extends FieldValues> = {
 };
 
 
-const AuthInput = <T extends FieldValues>({id, type = 'text', register, label, error}: Props<T>) => {
+const FormInput = <T extends FieldValues>({id, type = 'text', register, label, error}: Props<T>) => {
     return (
         <div>
             <input
@@ -25,4 +25,4 @@ const AuthInput = <T extends FieldValues>({id, type = 'text', register, label, e
     );
 };
 
-export default AuthInput;
+export default FormInput;

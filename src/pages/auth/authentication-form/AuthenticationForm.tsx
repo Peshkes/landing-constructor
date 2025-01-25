@@ -2,7 +2,7 @@ import {FieldValues, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {authenticationValidationSchema} from "./authenticationValidation.ts";
 import AuthForm from "../auth-form/AuthForm.tsx";
-import AuthInput from "../auth-input/AuthInput.tsx";
+import FormInput from "../../../shared/components/form-input/FormInput.tsx";
 import useAuthentication from "../../../features/authentication/useAuthentication.ts";
 import useModal from "../../../shared/components/modal/useModal.tsx";
 
@@ -29,14 +29,14 @@ const AuthenticationForm = () => {
                 handleSubmit={handleSubmit}
                 isSubmitting={isSubmitting}
             >
-                <AuthInput
+                <FormInput
                     id="email"
                     label="Электронная почта"
                     type="email"
                     register={register}
                     error={errors.email}
                 />
-                <AuthInput
+                <FormInput
                     id="password"
                     label="Пароль"
                     type="password"

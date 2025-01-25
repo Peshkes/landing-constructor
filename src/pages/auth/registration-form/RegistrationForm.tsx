@@ -1,7 +1,7 @@
 import {FieldValues, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {registrationValidationSchema} from "./registrationValidation.ts";
-import AuthInput from "../auth-input/AuthInput.tsx";
+import FormInput from "../../../shared/components/form-input/FormInput.tsx";
 import AuthForm from "../auth-form/AuthForm.tsx";
 import {AuthApi} from "../../../features/authentication/AuthApi.ts";
 import useAuthentication from "../../../features/authentication/useAuthentication.ts";
@@ -19,7 +19,7 @@ const RegistrationForm  = () => {
     });
 
     const onSubmit = (data: FieldValues) => {
-        AuthApi.registration(data.name, data.email, data.password)
+        AuthApi.registration(data.name, data.email, data.password, data.phone)
             .then((res) => {
                 if (res) login(data.email, data.password)
                 .catch((error) => openMessage(error.toString(), 'error'));
@@ -35,27 +35,33 @@ const RegistrationForm  = () => {
                 handleSubmit={handleSubmit}
                 isSubmitting={isSubmitting}
             >
-                <AuthInput
+                <FormInput
                     id="name"
                     label="Имя пользователя"
                     register={register}
                     error={errors.name}
                 />
-                <AuthInput
+                <FormInput
                     id="email"
                     label="Электронная почта"
                     type="email"
                     register={register}
                     error={errors.email}
                 />
-                <AuthInput
+                <FormInput
+                    id="phone"
+                    label="Телефон"
+                    register={register}
+                    error={errors.phone}
+                />
+                <FormInput
                     id="password"
                     label="Пароль"
                     type="password"
                     register={register}
                     error={errors.password}
                 />
-                <AuthInput
+                <FormInput
                     id="confirmPassword"
                     label="Подтвердите пароль"
                     type="password"

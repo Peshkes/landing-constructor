@@ -1,6 +1,7 @@
 export type AuthenticationStore = {
     user: User | null,
-    login: (email: string, password: string) => Promise<any>,
+    login: (email: string, password: string) => Promise<void | User | null>,
+    softLogin: () => Promise<void | User | null>,
     logout: () => void,
 }
 
@@ -19,6 +20,7 @@ export type csrfResponse = {
 }
 
 export type User = {
+    _id: string,
     name: string,
     email: string
 }

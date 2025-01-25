@@ -55,6 +55,7 @@ const template2: GroupAccess[] = [{
 const usePanel = create<OffersStore>(() => ({
     offerPreviews: templates,
     groupAccesses: template2,
+    selectedGroupId: "asdasd-asdasdasd-asdasd-adsdas",
     selectedGroup: {
         groupId: "asdasd-asdasdasd-asdasd-adsdas",
         name: "PREventBureau",

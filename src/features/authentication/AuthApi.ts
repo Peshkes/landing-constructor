@@ -29,7 +29,9 @@ export class AuthApi {
     public static login = (email: string, password: string) => {
         localStorage.setItem('email', email);
         this.password = password;
-        return RequestService.processRequest<AuthenticationFormData, User>(this.baseEndpoint + '/signin', "POST", {email, password});
+        const result = RequestService.processRequest<AuthenticationFormData, User>(this.baseEndpoint + '/signin', "POST", {email, password});
+        localStorage.setItem('lastRefresh', new Date().toString());
+        return result;
     }
 
     public static autoLogin() {
@@ -40,12 +42,16 @@ export class AuthApi {
             console.error('Нет данных для автоматической авторизации')
     }
 
+    public static softLogin() {
+        return RequestService.processRequest<void, User>(this.baseEndpoint + '/soft/signin', "POST");
+    }
+
     public static refresh = async () => {
         return RequestService.processRequest(this.baseEndpoint + '/refresh', "POST");
     }
 
-    public static registration = async (name: string, email: string, password: string) => {
-        return RequestService.processRequest(this.baseEndpoint + '/registration', "POST", {name, email, password});
+    public static registration = async (name: string, email: string, password: string, phone: string) => {
+        return RequestService.processRequest(this.baseEndpoint + '/registration', "POST", {name, email, password, phone});
     }
 
     public static logout = () => {

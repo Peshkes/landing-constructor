@@ -11,6 +11,13 @@ const useAuthentication = create<AuthenticationStore>((set) => ({
                     if (res) set({user: res});
                 }
             ),
+    softLogin: () =>
+        AuthApi.softLogin()
+            .then(
+                (res) => {
+                    if (res) set({user: res});
+                }
+            ),
     logout: () =>
         AuthApi.logout()
             .then(

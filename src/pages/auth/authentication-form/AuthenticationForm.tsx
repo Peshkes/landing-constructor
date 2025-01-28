@@ -2,13 +2,14 @@ import {FieldValues, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {authenticationValidationSchema} from "./authenticationValidation.ts";
 import AuthForm from "../auth-form/AuthForm.tsx";
-import FormInput from "../../../shared/components/form-input/FormInput.tsx";
+import FormInput from "../../../shared/ui/form-input/FormInput.tsx";
 import useAuthentication from "../../../features/authentication/useAuthentication.ts";
 import useModal from "../../../shared/components/modal/useModal.tsx";
 
 const AuthenticationForm = () => {
     const login = useAuthentication((state) => state.login);
     const {openMessage, Modal, isOpen} = useModal();
+
     const {
         register,
         handleSubmit,

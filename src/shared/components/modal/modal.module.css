@@ -12,7 +12,6 @@
 }
 
 .modalContent {
-    background: white;
     padding: 40px;
     border-radius: 10px;
     position: relative;
@@ -28,6 +27,11 @@
     background: none;
     border: none;
     cursor: pointer;
+}
+
+.default{
+    background-color: var(--background-color-4);
+    color: var(--text-color-2);
 }
 
 .success {

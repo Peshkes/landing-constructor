@@ -1,7 +1,7 @@
 import {ReactNode, useCallback, useState} from 'react';
 import Modal from "./Modal.tsx";
 
-export type MessageType = 'success' | 'error' | 'info';
+export type MessageType = 'success' | 'error' | 'info' | 'default';
 
 type UseModalReturnType = {
     isOpen: boolean;
@@ -15,7 +15,7 @@ type UseModalReturnType = {
 const useModal = (): UseModalReturnType => {
     const [isOpen, setIsOpen] = useState(false);
     const [message, setMessage] = useState<string>('');
-    const [messageType, setMessageType] = useState<MessageType>('info');
+    const [messageType, setMessageType] = useState<MessageType>('default');
 
     const openModal = useCallback(() => setIsOpen(true), []);
     const closeModal = useCallback(() => setIsOpen(false), []);

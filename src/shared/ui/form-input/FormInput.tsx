@@ -1,5 +1,5 @@
 import {FieldError, FieldValues, Path, UseFormRegister} from 'react-hook-form';
-import styles from './input.module.css';
+import styles from './formInput.module.css';
 
 type Props<T extends FieldValues> = {
     id: Path<T>;

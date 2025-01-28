@@ -1,7 +1,7 @@
 import {FieldValues, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {registrationValidationSchema} from "./registrationValidation.ts";
-import FormInput from "../../../shared/components/form-input/FormInput.tsx";
+import FormInput from "../../../shared/ui/form-input/FormInput.tsx";
 import AuthForm from "../auth-form/AuthForm.tsx";
 import {AuthApi} from "../../../features/authentication/AuthApi.ts";
 import useAuthentication from "../../../features/authentication/useAuthentication.ts";

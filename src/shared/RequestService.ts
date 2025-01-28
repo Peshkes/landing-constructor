@@ -42,7 +42,6 @@ export class RequestService {
         };
 
         try {
-            console.log(headers)
             const response = await fetch(`${this.BASE_URL}/${endpoint}`, {
                 method,
                 headers,

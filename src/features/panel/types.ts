@@ -1,8 +1,17 @@
 export type OffersStore = {
     offerPreviews: OfferPreview[],
     groupAccesses: GroupAccess[],
-    selectedGroupId: string,
-    selectedGroup : Group
+    groupPage: number,
+    groupIsLoading: boolean,
+    groupsAreFull: boolean,
+    groupFilters: string[],
+
+    incrementPage: (user_id: string) => void,
+    resetPage: (user_id: string) => void,
+    fetchGroups: (user_id: string, page?: number) => void,
+
+    selectedGroupId: string | null,
+    selectedGroup : Group | null,
 };
 
 export type Group = {
@@ -11,11 +20,13 @@ export type Group = {
     accesses: {
         accountId: string,
         name: string,
-        role: string
+        role: string,
+        email: string
     }[],
     settings: {
        image: string
-    }
+    },
+    offerPreviews: OfferPreview[],
 }
 
 export type GroupAccess = {
@@ -23,6 +34,15 @@ export type GroupAccess = {
     name: string,
     image: string,
     role: Role,
+}
+
+export type CreateGroupRequest = {
+    name: string
+}
+
+export type GetPaginatedGroupsResponse = {
+    data: GroupAccess[],
+    total: number,
 }
 
 export type Role = {

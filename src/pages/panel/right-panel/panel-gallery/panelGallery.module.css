@@ -2,6 +2,8 @@
     display: grid;
     grid-gap: 20px;
     width: 100%;
+    height: Min(100px, 0);
+    overflow-y: scroll;
 }
 
 .small{
@@ -15,3 +17,8 @@
 .large{
     grid-template-columns: repeat(3, 1fr);
 }
+
+.gallery::-webkit-scrollbar {
+    display: none;
+}
+

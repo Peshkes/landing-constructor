@@ -1,10 +1,10 @@
 import HeaderPanel from "../right-panel/header-panel/HeaderPanel.tsx";
 import OfferCard from "../right-panel/offer-card/OfferCard.tsx";
 import PanelGallery from "../right-panel/panel-gallery/PanelGallery.tsx";
-import usePanel from "../../../features/panel/usePanel.ts";
+import useGroupsPanel from "../../../features/panel/group/useGroupsPanel.ts";
 
 const RecentlyPanelSubpage = () => {
-    const {offerPreviews} = usePanel();
+    const {offerPreviews} = useGroupsPanel();
     return (
         <div className={"page box-sizing"}>
             <HeaderPanel name={"Недавнее"}/>

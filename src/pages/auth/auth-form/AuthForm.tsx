@@ -1,6 +1,7 @@
 import styles from './form.module.css';
 import {FieldValues, useForm} from 'react-hook-form';
 import {ReactNode} from "react";
+import FormButton from "../../../shared/ui/form-button/FormButton.tsx";
 
 type FormProps = {
     isSubmitting: boolean;
@@ -13,13 +14,7 @@ const AuthForm = ({ isSubmitting, onSubmit, handleSubmit, children }: FormProps)
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
             {children}
-            <button
-                type="submit"
-                className={`${styles.submitButton} ${isSubmitting ? styles.disabledButton : ''}`}
-                disabled={isSubmitting}
-            >
-                Отправить
-            </button>
+            <FormButton isSubmitting={isSubmitting}/>
         </form>
     );
 };

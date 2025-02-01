@@ -7,11 +7,12 @@ type SettingsInputBaseProps = {
     value: string;
     onChange: (value: string) => void;
     inputElement: React.ElementType;
+    type?: string;
     style?: React.CSSProperties;
     children?: React.ReactNode;
 };
 
-const SettingsInputBase = ({ label, value, onChange, children, inputElement: InputElement, style }: SettingsInputBaseProps) => {
+const SettingsInputBase = ({ label, value, onChange, children, inputElement: InputElement, style, type="string" }: SettingsInputBaseProps) => {
     const [inputValue, setInputValue] = useState(value);
     const refTimer = React.useRef<any>(null);
 
@@ -33,6 +34,7 @@ const SettingsInputBase = ({ label, value, onChange, children, inputElement: Inp
         <SettingsLabel label={label} style={style}>
             <div className={styles.inputContainer}>
                 <InputElement
+                    type={type}
                     className={styles.input}
                     onChange={handleInputChange}
                     value={inputValue}

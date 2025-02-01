@@ -1,4 +1,4 @@
-import SideContentMenu from "../../../shared/components/side-content-menu/SideContentMenu.tsx";
+import SideContentMenu from "../../constructor/side-content-menu/SideContentMenu.tsx";
 import styles from "./leftPanel.module.css";
 import LeftPanelContent from "./LeftPanelContent.tsx";
 

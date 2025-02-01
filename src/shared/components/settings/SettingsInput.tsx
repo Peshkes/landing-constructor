@@ -3,18 +3,20 @@ import SettingsInputBase from "./settings-input-base/SettingsInputBase.tsx";
 
 export type SettingsInputProps = {
     label: string;
-    value: string;
-    onChange: (value: string) => void;
+    value: any;
+    onChange: (value: any) => void;
+    type?: string;
     children?: ReactNode;
 };
 
-const SettingsInput = ({ label, value, onChange, children }: SettingsInputProps) => {
+const SettingsInput = ({ label, value, onChange, type, children }: SettingsInputProps) => {
     return (
         <SettingsInputBase
             label={label}
             value={value}
             onChange={onChange}
             inputElement="input"
+            type={type}
         >
             {children}
         </SettingsInputBase>

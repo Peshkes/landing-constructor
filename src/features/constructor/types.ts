@@ -26,6 +26,15 @@ export type AnimateStore = {
     setBlockOnTheTrash: (order: number | null) => void,
 }
 
+export type ConstructorSettingsStore = {
+    flyMode: boolean,
+    setFlyMode: (value: boolean) => void,
+    toggleFlyMode: () => void,
+
+    workzonePadding: number,
+    setWorkzonePadding: (value: number) => void,
+}
+
 export type Offer = OfferPreview & {
     body: Array<OfferBlock>,
     settings: OfferSettings,
@@ -40,17 +49,17 @@ export type OfferSettings = {
 
 export type ConstructorStatus = "saved" | "not saved";
 
-export type LibraryBlock = {
+export type LibraryBlock<T extends BlockSettings> = {
     block_code: string,
     title: string,
     image: string,
-    item: React.FC<BlockSettings>,
+    item: React.FC<T>,
     defaultSettings: BlockSettings
 }
 
 export type LibraryItem = {
     title: string,
-    blocks: Array<LibraryBlock>
+    blocks: Array<LibraryBlock<any>>
 }
 
 export type Library = Array<LibraryItem>

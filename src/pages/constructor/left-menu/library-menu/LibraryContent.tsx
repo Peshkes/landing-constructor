@@ -1,6 +1,6 @@
-import SideHeader from "../side-header/SideHeader.tsx";
-import SideContentBody from "../side-content-body/SideContentBody.tsx";
-import LibraryMenu from "./library-menu/LibraryMenu.tsx";
+import SideHeader from "../../side-header/SideHeader.tsx";
+import SideContentBody from "../../side-content-body/SideContentBody.tsx";
+import LibraryMenu from "./LibraryMenu.tsx";
 
 const LibraryContent = () => {
     return (

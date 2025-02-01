@@ -1,5 +1,6 @@
 import React, { ReactNode, useCallback, useRef, useEffect, useState } from "react";
 import style from "./sideContentMenu.module.css";
+import useConstructorSettings from "../../../features/constructor/useConstructorSettings.ts";
 
 type Props = {
     isOpen: boolean;
@@ -11,6 +12,7 @@ type Props = {
 };
 
 const SideContentMenu = ({ isOpen, side, minWidth, maxWidth, defaultWidth, children }: Props) => {
+    const flyMode = useConstructorSettings((state) => state.flyMode);
     const menuRef = useRef<HTMLDivElement>(null);
     const [currentWidth, setCurrentWidth] = useState(defaultWidth);
 
@@ -43,13 +45,13 @@ const SideContentMenu = ({ isOpen, side, minWidth, maxWidth, defaultWidth, child
         } else {
             menuRef.current!.style.width = `${currentWidth}px`;
         }
-    }, [isOpen]);
+    }, [isOpen, flyMode]);
 
     return (
         <div
             ref={menuRef}
             style={{ width: currentWidth }}
-            className={`${style.body} ${side === "left" ? style.left : style.right}`}
+            className={`${style.body} no-select ${side === "left" ? style.left : style.right} ${flyMode ? style.flyingStyle : style.defaultStyle}`}
         >
             {children}
             <div

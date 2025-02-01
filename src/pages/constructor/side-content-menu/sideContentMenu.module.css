@@ -1,8 +1,26 @@
 .body{
     background-color: var(--background-color-2);
-    position: relative;
     overflow: hidden;
     box-sizing: border-box;
+}
+
+.defaultStyle{
+    position: relative;
+}
+
+.flyingStyle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+.flyingStyle.left {
+    left: 50px;
+}
+
+.flyingStyle.right {
+    right: 50px;
 }
 
 .open {
@@ -10,12 +28,10 @@
 }
 
 .left {
-    left: 0;
     border-left: var(--background-color-1) 1px solid;
 }
 
 .right {
-    right: 0;
     border-right: var(--background-color-1) 1px solid;
 }
 

@@ -58,7 +58,7 @@ export type OfferPreview = {
     name: string,
     status: OfferStatus,
     views: number,
-    expirationDate: Date | null
+    expirationDate?: Date
 };
 
 export enum OfferStatuses {

@@ -6,6 +6,7 @@ const template: Offer = {
     name: "Template Offer",
     status: "draft",
     views: 4,
+    image: "",
     body: [
         {
             id: "ccccccc",

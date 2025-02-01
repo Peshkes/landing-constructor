@@ -1,6 +1,6 @@
 import {useState} from "react";
 import SideIconMenu from "../side-icon-menu/SideIconMenu.tsx";
-import SideContentMenu from "../../../shared/components/side-content-menu/SideContentMenu.tsx";
+import SideContentMenu from "../side-content-menu/SideContentMenu.tsx";
 import GridButton from "../../../shared/components/buttons/GridButton.tsx";
 import ItemsContent from "./item-content/ItemsContent.tsx";
 
@@ -23,9 +23,9 @@ const RightMenu = () => {
             <SideContentMenu side={"right"} isOpen={isOpen} minWidth={200} maxWidth={300} defaultWidth={200}>
                 {activeButton === 'grid' && <ItemsContent/>}
             </SideContentMenu>
-            <SideIconMenu>
+            <SideIconMenu topNodes={
                 <GridButton onClick={() => handleButtonClick('grid')} isOpen={isOpen && activeButton === 'grid'}/>
-            </SideIconMenu>
+            }/>
         </div>
     );
 };

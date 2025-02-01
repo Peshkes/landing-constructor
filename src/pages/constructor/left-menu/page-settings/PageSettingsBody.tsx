@@ -18,10 +18,8 @@ const PageSettingsBody = () => {
                     <Component
                         key={key}
                         label={key}
-                        value={offer.settings[key] ? offer.settings[key] : ""}
-                        onChange={(newValue: string) =>
-                            updateOfferSettings(key, newValue)
-                        }
+                        value={offer.settings[key] ? typeof offer.settings[key] === "object" ? JSON.stringify(offer.settings[key]) : offer.settings[key] : ""}
+                        onChange={(newValue: string) => updateOfferSettings(key, newValue)}
                     />
                 );
             })

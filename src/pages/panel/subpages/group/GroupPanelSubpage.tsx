@@ -6,15 +6,17 @@ import GroupPanelRightSide from "./right-side/GroupPanelRightSide.tsx";
 import GroupAccessesGallery from "./GroupAccessesGallery.tsx";
 import useModal from "../../../../shared/components/modal/useModal.tsx";
 import AddGroupForm from "./add-group/AddGroupForm.tsx";
+import useGroupsPanel from "../../../../features/panel/group/useGroupsPanel.ts";
 
 const GroupPanelSubpage = () => {
     const {openModal, Modal, isOpen, closeModal} = useModal();
+    const changeFilters = useGroupsPanel(state => state.changeFilters);
 
     return (
         <div className={styles.page}>
             <div className={styles.leftMenu}>
                 <HeaderPanel name={"Группы"} onClick={openModal}/>
-                <Filtres filtres={<RoleFilterBlock/>}/>
+                <Filtres filtres={<RoleFilterBlock onChange={changeFilters}/>}/>
                 <GroupAccessesGallery/>
             </div>
             <GroupPanelRightSide/>

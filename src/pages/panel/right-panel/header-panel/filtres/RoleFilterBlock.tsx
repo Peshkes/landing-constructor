@@ -1,13 +1,19 @@
 import {useFilters} from "../../../../../features/panel/useFilters.ts";
 import FilterItem from "./FilterItem.tsx";
-import {useLayoutEffect} from "react";
+import {useEffect, useLayoutEffect} from "react";
 import {useSearchParams} from "react-router-dom";
 import {offerGroupRoles} from "../../../../../features/panel/offer/types.ts";
+import useAuthentication from "../../../../../features/authentication/useAuthentication.ts";
 
 
-const RoleFilterBlock = () => {
+const RoleFilterBlock = ({onChange}: { onChange: (user_id: string, filters: string[]) => void }) => {
+    const user_id = useAuthentication(state => state.user!._id);
     const { activeItems, toggleFilter } = useFilters("roles");
     const [searchParams, setSearchParams] = useSearchParams();
+
+    useEffect(() => {
+        onChange(user_id, activeItems);
+    }, [activeItems, onChange, user_id]);
 
     useLayoutEffect(() => {
         if (!searchParams.has("roles")) {

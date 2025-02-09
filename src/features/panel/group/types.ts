@@ -9,11 +9,13 @@ export type GroupsStore = {
 
     incrementPage: (user_id: string) => void,
     resetPageAndFetch: (user_id: string) => void,
+    changeFilters: (user_id: string, filters: string[]) => void,
     fetchGroups: (user_id: string, page?: number) => void,
 
     selectedGroupId: string | null,
     selectedGroupData : Group | null,
     groupDataIsLoading: boolean,
+
     selectGroup: (id: string) => void,
     fetchGroupData: (group_id: string) => void
 };

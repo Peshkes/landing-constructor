@@ -7,7 +7,7 @@ const useGroupsPanel = create<GroupsStore>((set, get) => ({
     groupAccesses: [],
     groupPage: 0,
     groupIsLoading: false,
-    groupFilters: [],
+    groupFilters: ["admin", "moderator", "user"],
     groupsAreFull: false,
 
     incrementPage: (user_id: string) => {
@@ -19,12 +19,18 @@ const useGroupsPanel = create<GroupsStore>((set, get) => ({
         set({groupPage: 0});
         get().fetchGroups(user_id, 0);
     },
+    changeFilters: (user_id: string, filters: string[]) => {
+        if (filters.length)
+        set({groupFilters: filters});
+        get().resetPageAndFetch(user_id);
+    },
     fetchGroups: async (user_id: string, page?: number) => {
         page = page || get().groupPage;
         const groupAccesses = get().groupAccesses;
         set({groupIsLoading: true});
         try {
-            const response = await GroupApi.getPaginatedGroups(user_id, page, get().groupFilters);
+            const filters = get().groupFilters;
+            const response = await GroupApi.getPaginatedGroups(user_id, page, filters.length!== 3 ? filters : undefined);
             const groupsAreFull = response.data.length === response.total || response.total === response.data.length + groupAccesses.length;
             set({
                 groupAccesses: page === 0 || groupAccesses.length === 0 ? response.data : groupAccesses.concat(response.data),

@@ -8,7 +8,7 @@ import useModal from "../../../../shared/components/modal/useModal.tsx";
 import AddGroupForm from "./add-group/AddGroupForm.tsx";
 
 const GroupPanelSubpage = () => {
-    const {openModal, Modal, isOpen} = useModal();
+    const {openModal, Modal, isOpen, closeModal} = useModal();
 
     return (
         <div className={styles.page}>
@@ -19,7 +19,7 @@ const GroupPanelSubpage = () => {
             </div>
             <GroupPanelRightSide/>
             {isOpen && <Modal>
-                <AddGroupForm/>
+                <AddGroupForm closeModal={closeModal}/>
             </Modal>}
         </div>
     )

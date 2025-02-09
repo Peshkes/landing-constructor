@@ -9,10 +9,10 @@ import useAuthentication from "../../../../../features/authentication/useAuthent
 import useGroupsPanel from "../../../../../features/panel/group/useGroupsPanel.ts";
 import useModal from "../../../../../shared/components/modal/useModal.tsx";
 
-const AddGroupForm = () => {
+const AddGroupForm = ({closeModal}: {closeModal: () => void}) => {
     const user = useAuthentication(state => state.user);
     const fetchGroups = useGroupsPanel(state => state.fetchGroups);
-    const {Modal, isOpen, openMessage, closeModal} = useModal();
+    const {Modal, isOpen, openMessage} = useModal();
     const {
         register,
         handleSubmit,

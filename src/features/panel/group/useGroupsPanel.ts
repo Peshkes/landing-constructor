@@ -11,8 +11,9 @@ const useGroupsPanel = create<OffersStore>((set, get) => ({
     groupsAreFull: false,
 
     incrementPage: (user_id: string) => {
-        set({groupPage: get().groupPage + 1});
-        get().fetchGroups(user_id, get().groupPage + 1);
+        const groupPage = get().groupPage + 1
+        set({groupPage});
+        get().fetchGroups(user_id, groupPage);
     },
     resetPage: (user_id: string) => {
         set({groupPage: 0});
@@ -22,10 +23,18 @@ const useGroupsPanel = create<OffersStore>((set, get) => ({
         page = page || get().groupPage;
         const groupAccesses = get().groupAccesses;
         set({groupIsLoading: true});
-        const response = await GroupApi.getPaginatedGroups(user_id, page, get().groupFilters);
-        const groupsAreFull = response.data.length === response.total || response.total === response.data.length + groupAccesses.length;
-        if (page === 0 || groupAccesses.length === 0) set({groupAccesses: response.data, groupIsLoading: false, groupsAreFull});
-        else set({groupAccesses: groupAccesses.concat(response.data), groupIsLoading: false, groupsAreFull});
+        try {
+            const response = await GroupApi.getPaginatedGroups(user_id, page, get().groupFilters);
+            const groupsAreFull = response.data.length === response.total || response.total === response.data.length + groupAccesses.length;
+            set({
+                groupAccesses: page === 0 || groupAccesses.length === 0 ? response.data : groupAccesses.concat(response.data),
+                groupsAreFull,
+            });
+        } catch (error) {
+            console.error("Ошибка при загрузке групп:", error);
+        } finally {
+            set({ groupIsLoading: false });
+        }
     },
 
     selectedGroupId: null,

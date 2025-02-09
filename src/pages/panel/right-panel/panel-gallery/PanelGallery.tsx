@@ -1,4 +1,4 @@
-import {ReactNode, useEffect, useRef, useState} from "react";
+import {ReactNode, useCallback, useEffect, useRef, useState} from "react";
 import styles from "./panelGallery.module.css";
 import {throttle} from "../../../../shared/functions.ts";
 
@@ -11,7 +11,10 @@ const PanelGallery = ({children, onScroll}: Props) => {
     const divRef = useRef<HTMLDivElement | null>(null);
     const [rows, setRows] = useState<number | undefined>(undefined);
 
-    const throttledOnScroll = throttle(onScroll, 1000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const throttledOnScroll = useCallback(throttle((element: HTMLDivElement) => {
+        onScroll(element);
+    }, 1000), [onScroll]);
 
     function calculateRows() {
         if (divRef.current) {
@@ -29,10 +32,13 @@ const PanelGallery = ({children, onScroll}: Props) => {
 
     useEffect(() => {
         const container = divRef.current;
-        if (container) container.addEventListener("scroll", () => throttledOnScroll(container));
+        if (!container) return;
+
+        const scrollHandler = () => throttledOnScroll(container);
+        container.addEventListener("scroll", scrollHandler);
 
         return () => {
-            if (container) container.removeEventListener("scroll", () => throttledOnScroll(container));
+            container.removeEventListener("scroll", scrollHandler);
         };
     }, [throttledOnScroll]);
 

@@ -1,8 +1,8 @@
 import {useFilters} from "../../../../../features/panel/useFilters.ts";
-import {offerStatuses} from "../../../../../features/panel/types.ts";
 import FilterItem from "./FilterItem.tsx";
 import {useSearchParams} from "react-router-dom";
 import {useLayoutEffect} from "react";
+import {offerStatuses} from "../../../../../features/panel/offer/types.ts";
 
 const StatusFilterBlock = () => {
     const { activeItems, toggleFilter } = useFilters("statuses");

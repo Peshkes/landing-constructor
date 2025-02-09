@@ -1,8 +1,8 @@
 import {create} from "zustand";
-import {OffersStore} from "../types.ts";
 import {GroupApi} from "./GroupApi.ts";
+import {GroupsStore} from "./types.ts";
 
-const useGroupsPanel = create<OffersStore>((set, get) => ({
+const useGroupsPanel = create<GroupsStore>((set, get) => ({
     offerPreviews: [],
     groupAccesses: [],
     groupPage: 0,
@@ -15,7 +15,7 @@ const useGroupsPanel = create<OffersStore>((set, get) => ({
         set({groupPage});
         get().fetchGroups(user_id, groupPage);
     },
-    resetPage: (user_id: string) => {
+    resetPageAndFetch: (user_id: string) => {
         set({groupPage: 0});
         get().fetchGroups(user_id, 0);
     },
@@ -38,9 +38,25 @@ const useGroupsPanel = create<OffersStore>((set, get) => ({
     },
 
     selectedGroupId: null,
-    selectedGroup: null,
+    selectedGroupData: null,
+    groupDataIsLoading: false,
     selectGroup: (id: string) => {
-        set({selectedGroupId: id});
+        if (id !== get().selectedGroupId) {
+            set({selectedGroupId: id});
+            get().fetchGroupData(id);
+        }
+    },
+
+    fetchGroupData: async (group_id: string) => {
+        set({groupDataIsLoading: true});
+        try {
+            const response = await GroupApi.getGroup(group_id);
+            set({selectedGroupData: response});
+        } catch (error) {
+            console.error("Ошибка при загрузке данных группы:", error);
+        } finally {
+            set({groupDataIsLoading: false});
+        }
     }
 }));
 

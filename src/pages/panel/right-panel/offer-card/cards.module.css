@@ -80,9 +80,22 @@
 }
 
 .user .rightBlock div, .moderator .rightBlock div, .admin .rightBlock div{
-    background-color: var(--primary-color-3);
+    background-color: var(--primary-color-1);
     position: absolute;
     right: 0;
     top: 0;
     border-radius: 0 8px 0 8px;
+}
+
+.active{
+    background-color: var(--primary-color-3);
+    color: var(--text-color-1);
+}
+
+.active:hover{
+    background-color: var(--primary-color-4);
+}
+
+.active:hover .badge{
+    background-color: var(--primary-color-3);
 }

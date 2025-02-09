@@ -1,5 +1,5 @@
 import {RequestService} from "../../../shared/RequestService.ts";
-import {CreateGroupRequest, GetPaginatedGroupsResponse} from "../types.ts";
+import {CreateGroupRequest, GetPaginatedGroupsResponse, Group} from "./types.ts";
 
 export class GroupApi {
     private static baseEndpoint = 'group';
@@ -13,5 +13,10 @@ export class GroupApi {
     public static createGroup = (user_id: string, name: string) => {
         const url = `${this.baseEndpoint}/${user_id}`;
         return RequestService.processSecureRequest<CreateGroupRequest, void>(url, 'POST', {name});
+    }
+
+    public static getGroup = (id: string) => {
+        const url = `${this.baseEndpoint}/full/${id}`;
+        return RequestService.processSecureRequest<void, Group>(url);
     }
 }

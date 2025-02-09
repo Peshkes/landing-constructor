@@ -1,8 +1,8 @@
 import {useFilters} from "../../../../../features/panel/useFilters.ts";
-import {offerGroupRoles} from "../../../../../features/panel/types.ts";
 import FilterItem from "./FilterItem.tsx";
 import {useLayoutEffect} from "react";
 import {useSearchParams} from "react-router-dom";
+import {offerGroupRoles} from "../../../../../features/panel/offer/types.ts";
 
 
 const RoleFilterBlock = () => {

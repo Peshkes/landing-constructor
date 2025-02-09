@@ -5,11 +5,10 @@ import useAuthentication from "../../../../features/authentication/useAuthentica
 import PanelGallery from "../../right-panel/panel-gallery/PanelGallery.tsx";
 
 const GroupAccessesGallery = () => {
-    const {groupIsLoading, groupsAreFull, incrementPage, fetchGroups, groupPage} = useGroupsPanel((state) => state);
+    const {groupIsLoading, groupsAreFull, incrementPage, resetPageAndFetch} = useGroupsPanel((state) => state);
     const user_id = useAuthentication(state => state.user!._id);
 
     const handleScroll = (container: HTMLDivElement) => {
-        console.log(groupIsLoading, groupsAreFull, groupPage);
         if (!groupsAreFull && !groupIsLoading) {
             const {scrollTop, scrollHeight, clientHeight} = container;
             const isNearBottom = scrollTop + clientHeight >= scrollHeight - 250;
@@ -20,8 +19,8 @@ const GroupAccessesGallery = () => {
     };
 
     useEffect(() => {
-        fetchGroups(user_id, 0);
-    }, [fetchGroups, user_id]);
+        resetPageAndFetch(user_id);
+    }, [resetPageAndFetch, user_id]);
 
     return (
         <PanelGallery onScroll={handleScroll}>

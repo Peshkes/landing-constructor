@@ -39,3 +39,8 @@
 .open:active {
     background-color: var(--primary-color-3);
 }
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}

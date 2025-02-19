@@ -1,20 +1,21 @@
-import {ReactNode, useCallback, useEffect, useRef, useState} from "react";
+import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import styles from "./panelGallery.module.css";
-import {throttle} from "../../../../shared/functions.ts";
+import { throttle } from "../../../../shared/functions.ts";
 
 type Props = {
-    children: ReactNode
-    onScroll: (element: HTMLDivElement) => void
-}
+    children: ReactNode;
+    onScroll?: (element: HTMLDivElement) => void;
+};
 
-const PanelGallery = ({children, onScroll}: Props) => {
+const PanelGallery = ({ children, onScroll }: Props) => {
     const divRef = useRef<HTMLDivElement | null>(null);
     const [rows, setRows] = useState<number | undefined>(undefined);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    const throttledOnScroll = useCallback(throttle((element: HTMLDivElement) => {
-        onScroll(element);
-    }, 1000), [onScroll]);
+    const throttledOnScroll = useCallback(
+        onScroll ? throttle((element: HTMLDivElement) => onScroll(element), 1000) : () => {},
+        [onScroll]
+    );
 
     function calculateRows() {
         if (divRef.current) {
@@ -31,6 +32,8 @@ const PanelGallery = ({children, onScroll}: Props) => {
     }, []);
 
     useEffect(() => {
+        if (!throttledOnScroll) return; // Если нет onScroll, не добавляем обработчик
+
         const container = divRef.current;
         if (!container) return;
 
@@ -43,9 +46,10 @@ const PanelGallery = ({children, onScroll}: Props) => {
     }, [throttledOnScroll]);
 
     return (
-        <div ref={divRef} style={{gridTemplateColumns: `repeat(${rows}, 1fr)`}} className={styles.gallery}>
-            { rows && children }
+        <div ref={divRef} style={{ gridTemplateColumns: `repeat(${rows}, 1fr)` }} className={styles.gallery}>
+            {rows && children}
         </div>
-    )
-}
-export default PanelGallery
+    );
+};
+
+export default PanelGallery;

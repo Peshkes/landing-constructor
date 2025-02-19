@@ -1,26 +1,13 @@
 import GroupAccessesGenerator from "./GroupAccessesGenerator.tsx";
-import {useEffect} from "react";
 import useGroupsPanel from "../../../../features/panel/group/useGroupsPanel.ts";
-import useAuthentication from "../../../../features/authentication/useAuthentication.ts";
 import PanelGallery from "../../right-panel/panel-gallery/PanelGallery.tsx";
+import {createHandleScroll} from "../../../../shared/functions.ts";
 
 const GroupAccessesGallery = () => {
-    const {groupIsLoading, groupsAreFull, incrementPage, resetPageAndFetch} = useGroupsPanel((state) => state);
-    const user_id = useAuthentication(state => state.user!._id);
+    const {groupIsLoading, groupsAreFull, incrementPage} = useGroupsPanel((state) => state);
 
-    const handleScroll = (container: HTMLDivElement) => {
-        if (!groupsAreFull && !groupIsLoading) {
-            const {scrollTop, scrollHeight, clientHeight} = container;
-            const isNearBottom = scrollTop + clientHeight >= scrollHeight - 250;
-            if (isNearBottom && !groupIsLoading) {
-                incrementPage(user_id);
-            }
-        }
-    };
+    const handleScroll = createHandleScroll(groupIsLoading, groupsAreFull, incrementPage);
 
-    useEffect(() => {
-        resetPageAndFetch(user_id);
-    }, [resetPageAndFetch, user_id]);
 
     return (
         <PanelGallery onScroll={handleScroll}>

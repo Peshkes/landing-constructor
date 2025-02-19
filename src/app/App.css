@@ -52,3 +52,39 @@ html, body {
     -ms-user-select: none;
     user-select: none;
 }
+
+/* Стили для скроллбара */
+.scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--background-color-3);
+    border-radius: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: var(--background-color-4);
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    background: var(--background-color-0);
+}
+
+.scrollbar_transparent::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scrollbar_transparent::-webkit-scrollbar-thumb {
+    border-radius: 0 10px 10px 0;
+    background-color: var(--background-color-1);
+}
+
+.scrollbar_transparent::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+textarea::-webkit-resizer{
+    background: var(--background-color-4);
+    border-radius: 7px 0 7px 0;
+}

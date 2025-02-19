@@ -3,6 +3,7 @@ import React, {Suspense} from "react";
 import AuthenticationPage from "../../pages/auth/AuthenticationPage.tsx";
 import Loader from "../../shared/components/loader/Loader.tsx";
 import useAuthentication from "../../features/authentication/useAuthentication.ts";
+import Test from "./Test.tsx";
 
 const PanelPage = React.lazy(() => import("../../pages/panel/PanelPage.tsx"));
 const ConstructorPage = React.lazy(() => import("../../pages/constructor/ConstructorPage.tsx"));
@@ -28,6 +29,8 @@ const AppRouter = () => {
 
                 <Route path="/panel/*" element={<ProtectedRoute isAuthenticated={!!user} element={<PanelPage/>} />}/>
                 <Route path="/constructor/:id?" element={<ProtectedRoute isAuthenticated={!!user} element={<ConstructorPage />} />}/>
+
+                <Route path="/test" element={<Test/>}/>
             </Routes>
         </Suspense>
     );

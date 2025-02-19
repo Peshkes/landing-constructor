@@ -1,5 +1,5 @@
-import {OfferPreview} from "../panel/types.ts";
 import React from "react";
+import {OfferPreview} from "../panel/offers/types.ts";
 
 export type ConstructorStore = {
     status: ConstructorStatus,

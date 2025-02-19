@@ -25,3 +25,9 @@
     width: 100%;
     resize: vertical;
 }
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    color: var(--text-color-4);
+}

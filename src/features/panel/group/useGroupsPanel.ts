@@ -1,36 +1,42 @@
 import {create} from "zustand";
 import {GroupApi} from "./GroupApi.ts";
 import {GroupsStore} from "./types.ts";
+import {OfferGroupRole} from "../offers/types.ts";
 
 const useGroupsPanel = create<GroupsStore>((set, get) => ({
     offerPreviews: [],
     groupAccesses: [],
     groupPage: 0,
     groupIsLoading: false,
-    groupFilters: ["admin", "moderator", "user"],
+    groupFilters: {
+        admin: true,
+        moderator: true,
+        user: true
+    },
     groupsAreFull: false,
 
-    incrementPage: (user_id: string) => {
+    incrementPage: () => {
         const groupPage = get().groupPage + 1
         set({groupPage});
-        get().fetchGroups(user_id, groupPage);
+        get().fetchGroups(groupPage);
     },
-    resetPageAndFetch: (user_id: string) => {
+    toggleFilter: (filter: OfferGroupRole) => {
+        set({groupFilters: {...get().groupFilters, [filter]: !get().groupFilters[filter]}});
+        get().resetPageAndFetch();
+    },
+    resetPageAndFetch: () => {
         set({groupPage: 0});
-        get().fetchGroups(user_id, 0);
+        get().fetchGroups(0);
     },
-    changeFilters: (user_id: string, filters: string[]) => {
-        if (filters.length)
-        set({groupFilters: filters});
-        get().resetPageAndFetch(user_id);
-    },
-    fetchGroups: async (user_id: string, page?: number) => {
+    fetchGroups: async (page?: number) => {
         page = page || get().groupPage;
         const groupAccesses = get().groupAccesses;
         set({groupIsLoading: true});
         try {
-            const filters = get().groupFilters;
-            const response = await GroupApi.getPaginatedGroups(user_id, page, filters.length!== 3 ? filters : undefined);
+            const filterMap = get().groupFilters;
+            const filters = (Object.keys(filterMap) as OfferGroupRole[])
+                .filter(item => filterMap[item]);
+            const response = await GroupApi.getPaginatedGroups(page, filters);
             const groupsAreFull = response.data.length === response.total || response.total === response.data.length + groupAccesses.length;
             set({
                 groupAccesses: page === 0 || groupAccesses.length === 0 ? response.data : groupAccesses.concat(response.data),

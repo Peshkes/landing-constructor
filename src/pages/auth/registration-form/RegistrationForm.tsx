@@ -8,7 +8,7 @@ import useAuthentication from "../../../features/authentication/useAuthenticatio
 import useModal from "../../../shared/components/modal/useModal.tsx";
 
 const RegistrationForm  = () => {
-    const login = useAuthentication((state) => state.login);
+    const setUser = useAuthentication((state) => state.setUser);
     const {openMessage, Modal, isOpen} = useModal();
     const {
         register,
@@ -21,8 +21,7 @@ const RegistrationForm  = () => {
     const onSubmit = (data: FieldValues) => {
         AuthApi.registration(data.name, data.email, data.password, data.phone)
             .then((res) => {
-                if (res) login(data.email, data.password)
-                .catch((error) => openMessage(error.toString(), 'error'));
+                if (res) setUser(res)
                 else openMessage('Не удалось зарегистрироваться: ' + res, 'error');
             })
             .catch((error) => openMessage(error.toString(), 'error'));

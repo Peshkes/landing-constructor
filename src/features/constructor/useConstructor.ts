@@ -130,10 +130,10 @@ const useConstructor = create<ConstructorStore>((set, get) => ({
 
     saveOffer: (offer) => {
         console.log(offer)
-    }, //TODO save offer
+    }, //TODO save offers
     publishOffer: (offer) => {
         console.log(offer)
-    }, //TODO publish offer
+    }, //TODO publish offers
 }));
 
 export default useConstructor;

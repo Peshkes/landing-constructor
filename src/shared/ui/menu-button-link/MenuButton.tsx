@@ -7,16 +7,17 @@ type Props = {
     style?: CSSProperties;
     isOpen?: boolean;
     size?: number;
+    disabled?: boolean;
 }
 
-const MenuButton = ({ isOpen = false, onClick, size, style, children }: Props) => {
+const MenuButton = ({ isOpen = false, onClick, size, style, disabled, children }: Props) => {
     const combinedStyle: CSSProperties = {
         ...style,
         ...(size ? { width: size, height: size } : { paddingLeft: "15px", paddingRight: "15px" }),
     };
 
     return (
-        <button style={combinedStyle} onClick={onClick} className={styles.button + ` ${isOpen ? styles.open : ''}`}>
+        <button disabled={disabled} style={combinedStyle} onClick={onClick} className={`${styles.button} ${isOpen ? styles.open : ''} ${disabled ? styles.disabled : ''}`}>
             {children}
         </button>
     );

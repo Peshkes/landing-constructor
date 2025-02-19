@@ -1,6 +1,7 @@
 export type AuthenticationStore = {
     user: User | null,
     login: (email: string, password: string) => Promise<void | User | null>,
+    setUser: (user: User) => void,
     softLogin: () => Promise<void | User | null>,
     logout: () => void,
 }

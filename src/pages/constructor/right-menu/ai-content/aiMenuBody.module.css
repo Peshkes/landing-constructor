@@ -1,0 +1,35 @@
+.control{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.response{
+    box-sizing: border-box;
+    width: 100%;
+    word-break: break-word;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    overflow-y: scroll;
+    border: 1px solid var(--background-color-4);
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.status{
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.thinking{
+    background-color: var(--primary-color-1);
+}
+
+.error{
+    background-color: var(--error-color);
+}
+
+.idle, .finished{
+    background-color: var(--background-color-3);
+}

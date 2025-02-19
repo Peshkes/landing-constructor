@@ -1,4 +1,4 @@
-import useConstructor from "../../../../features/constructor/useConstructor.ts";
+import useConstructor from "../../../../../features/constructor/useConstructor.ts";
 import ItemsStructureBlock from "../items-structure-block/ItemsStructureBlock.tsx";
 import style from "./itemsStructureGenerator.module.css";
 

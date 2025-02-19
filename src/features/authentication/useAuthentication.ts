@@ -1,4 +1,4 @@
-import {AuthenticationStore} from "./types.ts";
+import {AuthenticationStore, User} from "./types.ts";
 import {create} from "zustand";
 import {AuthApi} from "./AuthApi.ts";
 
@@ -11,6 +11,7 @@ const useAuthentication = create<AuthenticationStore>((set) => ({
                     if (res) set({user: res});
                 }
             ),
+    setUser: (user: User) => set({user}),
     softLogin: () =>
         AuthApi.softLogin()
             .then(

@@ -4,14 +4,14 @@ import {CreateGroupRequest, GetPaginatedGroupsResponse, Group} from "./types.ts"
 export class GroupApi {
     private static baseEndpoint = 'group';
 
-    public static getPaginatedGroups = (user_id: string, page: number = 0, filters?: string[]) => {
-        let url = `${this.baseEndpoint}/paginated/${user_id}?page=${page}&limit=10`;
+    public static getPaginatedGroups = (page: number = 0, filters?: string[]) => {
+        let url = `${this.baseEndpoint}/paginated?page=${page}&limit=10`;
         if (filters && filters.length > 0) url += `&roles=${filters.join(',')}`;
         return RequestService.processSecureRequest<void, GetPaginatedGroupsResponse>(url);
     }
 
-    public static createGroup = (user_id: string, name: string) => {
-        const url = `${this.baseEndpoint}/${user_id}`;
+    public static createGroup = (name: string) => {
+        const url = `${this.baseEndpoint}`;
         return RequestService.processSecureRequest<CreateGroupRequest, void>(url, 'POST', {name});
     }
 

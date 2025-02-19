@@ -1,10 +1,12 @@
-import {OfferBlock} from "../../../../features/constructor/types.ts";
+
 import style from "./itemsStructureBlock.module.css";
 import {useRef} from "react";
 import {useDrag, useDrop} from "react-dnd";
-import useConstructor from "../../../../features/constructor/useConstructor.ts";
-import {draggableTypes} from "../../../../features/constructor/constructorSettings.ts";
-import useAnimate from "../../../../features/constructor/useAnimate.ts";
+import {OfferBlock} from "../../../../../features/constructor/types.ts";
+import useConstructor from "../../../../../features/constructor/useConstructor.ts";
+import useAnimate from "../../../../../features/constructor/useAnimate.ts";
+import {draggableTypes} from "../../../../../features/constructor/constructorSettings.ts";
+
 
 const ItemsStructureBlock = ({block, index}: { block: OfferBlock, index: number }) => {
 

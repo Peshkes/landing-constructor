@@ -29,6 +29,72 @@ export class RequestService {
         }
     }
 
+    public static createSecureStream = async <D, R>(
+        endpoint: string,
+        handleChunk: (chunk: any) => void,
+        handleFinish: () => void,
+        method: string = "GET",
+        data?: D,
+        signal?: AbortSignal,
+        customHeaders: Record<string, string> = {}
+    ): Promise<R> => {
+        return this.handleAuthRetry(() =>
+            this.createStream<D>(endpoint, handleChunk, handleFinish, method, data, signal, customHeaders)
+        );
+    };
+
+    public static sendSecureRequest = async <D, R>(
+        endpoint: string,
+        method: string = "GET",
+        data?: D,
+        signal?: AbortSignal,
+        customHeaders: Record<string, string> = {}
+    ): Promise<R> => {
+        return this.handleAuthRetry(() =>
+            this.sendRequest<D, R>(endpoint, method, data, signal, customHeaders)
+        );
+    };
+
+    public static createStream = async <D>(
+        endpoint: string,
+        handleChunk: (chunk: any) => void,
+        handleFinish: () => void,
+        method: string = 'GET',
+        data?: D,
+        signal?: AbortSignal,
+        customHeaders: Record<string, string> = {}
+    ): Promise<any> => {
+        const headers = {
+            ...this.globalHeaders,
+            ...customHeaders,
+        };
+
+        try {
+            const response = await fetch(`${this.BASE_URL}/${endpoint}`, {
+                method,
+                headers,
+                body: data ? JSON.stringify(data) : undefined,
+                signal,
+                credentials: 'include',
+            });
+
+            const reader = response.body?.getReader();
+            const decoder = new TextDecoder();
+
+            if (reader) {
+                while (true) {
+                    const {done, value} = await reader.read();
+                    if (done) break;
+
+                    const chunk = decoder.decode(value);
+                    handleChunk(chunk);
+                }
+            }
+        } finally {
+            handleFinish();
+        }
+    }
+
     public static sendRequest = async <D, R>(
         endpoint: string,
         method: string = 'GET',
@@ -71,31 +137,29 @@ export class RequestService {
         }
     }
 
-    public static sendSecureRequest = async <D, R>(
-        endpoint: string,
-        method: string = 'GET',
-        data?: D,
-        signal?: AbortSignal,
-        customHeaders: Record<string, string> = {}
-    ): Promise<R> => {
+    private static async handleAuthRetry<T>(
+        requestFunction: () => Promise<T>
+    ): Promise<T> {
         try {
-            return await this.sendRequest<D, R>(endpoint, method, data, signal, customHeaders);
+            return await requestFunction();
         } catch (error: any) {
-            if (error.status === 401 && error.message.includes('Access token is not valid')) {
+            console.log(error)
+            if (error.status === 401) {
                 try {
                     await AuthApi.refresh();
-                    return await this.sendRequest<D, R>(endpoint, method, data, signal, customHeaders);
+                    console.log()
+                    return await requestFunction();
                 } catch (refreshError: any) {
-                    if (refreshError.status === 401 && refreshError.message.includes('Refresh token is not valid')) {
+                    if (refreshError.status === 401) {
                         try {
                             await AuthApi.autoLogin();
-                            return await this.sendRequest<D, R>(endpoint, method, data, signal, customHeaders);
+                            return await requestFunction();
                         } catch (signInError) {
-                            console.error('Sign-in failed:', signInError);
+                            console.error("Sign-in failed:", signInError);
                             throw signInError;
                         }
                     } else {
-                        console.error('Refresh token failed:', refreshError);
+                        console.error("Refresh token failed:", refreshError);
                         throw refreshError;
                     }
                 }

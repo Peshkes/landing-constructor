@@ -50,7 +50,7 @@ export class AuthApi {
         return RequestService.processRequest(this.baseEndpoint + '/refresh', "POST");
     }
 
-    public static registration = async (name: string, email: string, password: string, phone: string) => {
+    public static registration = async (name: string, email: string, password: string, phone: string): Promise<User> => {
         return RequestService.processRequest(this.baseEndpoint + '/registration', "POST", {name, email, password, phone});
     }
 

@@ -42,3 +42,13 @@ export function throttle(fn: any, delay: number) {
         }
     };
 }
+
+export function createHandleScroll(dataIsLoading: boolean, dataIsFull: boolean, incrementPage: () => void) {
+    return (container: HTMLDivElement) => {
+        if (!dataIsFull && !dataIsLoading) {
+            const {scrollTop, scrollHeight, clientHeight} = container;
+            const isNearBottom = scrollTop + clientHeight >= scrollHeight - 250;
+            if (isNearBottom && !dataIsLoading) incrementPage();
+        }
+    }
+}

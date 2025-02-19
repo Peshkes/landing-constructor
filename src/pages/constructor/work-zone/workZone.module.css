@@ -18,24 +18,6 @@
     justify-content: center;
 }
 
-/* Стили для скроллбара */
-.wrapper::-webkit-scrollbar {
-    width: 8px;
-}
-
-.wrapper::-webkit-scrollbar-thumb {
-    background-color: var(--background-color-3);
-    border-radius: 10px;
-}
-
-.wrapper::-webkit-scrollbar-thumb:hover {
-    background-color: var(--background-color-4);
-}
-
-.wrapper::-webkit-scrollbar-track {
-    background: var(--background-color-0);
-}
-
 .resolutions, .zoomControls{
     display: flex;
     position: absolute;

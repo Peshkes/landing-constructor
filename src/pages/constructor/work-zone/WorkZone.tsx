@@ -40,7 +40,7 @@ const WorkZone = () => {
                 panning={{disabled: true}}
             >
                 {({zoomIn, zoomOut, resetTransform}) => (
-                    <div className={style.wrapper}>
+                    <div className={style.wrapper + " scrollbar"}>
                         <div>
                             <TransformComponent>
                                 <div style={{width: `${resolution}px`}}>

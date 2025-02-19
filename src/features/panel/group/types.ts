@@ -1,16 +1,16 @@
-import {OfferPreview} from "../offer/types.ts";
+import {OfferGroupRole, OfferPreview} from "../offers/types.ts";
 
 export type GroupsStore = {
     groupAccesses: GroupAccess[],
     groupPage: number,
     groupIsLoading: boolean,
     groupsAreFull: boolean,
-    groupFilters: string[],
+    groupFilters: Record<OfferGroupRole, boolean>
 
-    incrementPage: (user_id: string) => void,
-    resetPageAndFetch: (user_id: string) => void,
-    changeFilters: (user_id: string, filters: string[]) => void,
-    fetchGroups: (user_id: string, page?: number) => void,
+    incrementPage: () => void,
+    toggleFilter: (filter: OfferGroupRole) => void,
+    resetPageAndFetch: () => void,
+    fetchGroups: (page?: number) => void,
 
     selectedGroupId: string | null,
     selectedGroupData : Group | null,

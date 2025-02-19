@@ -1,8 +1,10 @@
-import useConstructor from "../../../../features/constructor/useConstructor.ts";
+
 import {useDrop} from "react-dnd";
-import {draggableTypes} from "../../../../features/constructor/constructorSettings.ts";
 import style from "./trash.module.css";
-import useAnimate from "../../../../features/constructor/useAnimate.ts";
+import useConstructor from "../../../../../features/constructor/useConstructor.ts";
+import {draggableTypes} from "../../../../../features/constructor/constructorSettings.ts";
+import useAnimate from "../../../../../features/constructor/useAnimate.ts";
+
 
 const Trash = () => {
     const {removeBlock} = useConstructor();
